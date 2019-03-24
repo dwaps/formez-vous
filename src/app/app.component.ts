@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Todo } from './shared/models/todo';
 import { TodoService } from './shared/services/todo.service';
@@ -9,6 +9,8 @@ import { TodoService } from './shared/services/todo.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('inputMessage') inputMessage: ElementRef;
+
   public todos$: Observable<Todo[]> = this.todoService.todos$.asObservable();
   public message: string;
 
@@ -16,6 +18,7 @@ export class AppComponent {
 
   public addTodo() {
     this.todoService.addTodo({message: this.message, done: false});
+    this.inputMessage.nativeElement.value = '';
   }
 
   public deleteTodo(index: number) {

@@ -2,7 +2,7 @@
   <div class="m-auto" fxLayout="column" fxLayoutGap="20px">
     <h3 class="text-center">Liste de choses à faire</h3>
     <div fxLayout="row" fxLayoutGap="15" fxLayoutAlign="space-between">
-      <input type="text" [(ngModel)]="message" placeholder="que faire ?" class="form-control">
+      <input #inputMessage type="text" [(ngModel)]="message" placeholder="que faire ?" class="form-control">
       <button class="btn btn-primary" (click)="addTodo()">Ajouter</button>
     </div>
     <ul class="list-group">
