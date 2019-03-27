@@ -1,0 +1,21 @@
+<!-- https://getbootstrap.com/docs/4.3/components/card/ -->
+<!-- https://angular.io/api/common/UpperCasePipe -->
+
+<h1 class="text-center mb-5">Détail d'un livre</h1>
+
+<div class="card">
+  <h5 class="card-header card-header-info text-center">
+    {{ book.title | uppercase }}
+  </h5>
+
+  <div class="card-body text-center">
+    <h5 class="card-title">Description</h5>
+    <p class="card-text text-justify mx-4">
+      {{ book.summary }}
+    </p>
+    <img class="card-img-top" [src]="book.image" alt="Couverture du livre">
+    <hr>
+    <strong>Auteur du livre :</strong> {{ book.author }}
+  </div>
+
+</div>
