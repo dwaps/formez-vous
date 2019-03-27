@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BookService } from 'src/app/shared/services/book.service';
 
 @Component({
   selector: 'app-books-list',
@@ -7,16 +8,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class BooksListComponent implements OnInit {
 
-  @Input() books: any[];
-  @Output('pickBook') selectEvent: EventEmitter<{index: number}> = new EventEmitter();
+  books: any[];
 
-  constructor() { }
+  constructor(
+    private bookService: BookService
+  ) { }
 
   ngOnInit() {
+    this.books = this.bookService.booksList;
   }
 
   selectBook(index: number) {
-    this.selectEvent.emit({ index });
+    this.bookService.selectBook(index);
   }
 
 }
