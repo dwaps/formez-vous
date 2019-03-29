@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  booksList: Book[] = [
+  booksList = new BehaviorSubject<Book[]>([
     {
       title: 'Il était une fois',
       author: 'Michael CORNILLON',
@@ -25,14 +26,13 @@ export class BookService {
       image: 'http://lorempixel.com/640/480/abstract',
       summary: 'Quos deserunt porro labore eius voluptates laboriosam perspiciatis facilis ratione! Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio hic dolorem, delectus nostrum veniam.',
     }
-  ]
+  ]);
 
-  selectedBook: Book;
+  selectedBook = new BehaviorSubject<Book>(null);
 
   constructor() { }
 
   public selectBook(index: number) {
-    this.selectedBook = this.booksList[index];
-    console.log(this.selectedBook);
+    this.selectedBook.next(this.booksList.value[index]);
   }
 }

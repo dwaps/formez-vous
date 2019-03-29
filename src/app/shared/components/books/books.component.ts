@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <div class="row">
       <div class="col-lg-4">
       <app-books-list></app-books-list>
+      <hr class="d-lg-none m-5" />
       </div>
       <div class="col-lg-8">
         <app-book-details></app-book-details>
